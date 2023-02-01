@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { storageKeys } from '../enum/storage-keys.enum';
 import { Trainer } from '../models/trainer.model';
-import { StorageUtil } from '../utils/storage.Utils';
+import { StorageUtil} from '../utils/storage.Utils';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,7 @@ export class TrainerService {
     return this._trainer;
   }
   set trainer(trainer: Trainer | undefined) {
+    StorageUtil.storageSave<Trainer>(storageKeys.Trainer, trainer!);
     this._trainer = trainer;
   }
 

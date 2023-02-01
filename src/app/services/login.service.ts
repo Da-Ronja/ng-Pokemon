@@ -18,11 +18,11 @@ export class LoginService {
     public login(username: string): Observable<Trainer>{
       return this.checkUsername(username)
         .pipe(
-          switchMap((user: Trainer | undefined)=>{
-            if(user === undefined){
-              return this.createUser(username);
+          switchMap((trainer: Trainer | undefined)=>{
+            if(trainer === undefined){
+              return this.createTrainer(username);
             }
-           return of(user);
+           return of(trainer);
           }),
           tap((user: Trainer)=>{
             StorageUtil.storageSave<Trainer>(storageKeys.User, user);
@@ -36,12 +36,12 @@ export class LoginService {
         map((response:Trainer[])=>response.pop())
       )
     }
-  // If not user - create a User
-  private createUser(username: string):Observable<Trainer>{
-    // user
-    const user = {
+  // If not user - create a Trainer
+  private createTrainer(username: string):Observable<Trainer>{
+    // trainer
+    const trainer = {
       username,
-      favourites: []
+      pokemon: []
     };
     //headers -> API key
     const headers = new HttpHeaders({
@@ -49,7 +49,7 @@ export class LoginService {
       "x-api-key": apiKey
     });
     // Post - Create items on the Server
-    return this.http.post<Trainer>(apiTrainers, user, {
+    return this.http.post<Trainer>(apiTrainers, trainer, {
       headers
     })
   }

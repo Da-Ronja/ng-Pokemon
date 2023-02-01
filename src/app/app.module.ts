@@ -10,6 +10,7 @@ import { PokemonCataloguePage } from './pages/pokemon-catalogue/pokemon-catalogu
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     TrainerPage,
     PokemonCataloguePage,
     LoginFormComponent,
-    NavbarComponent
+    PokemonListComponent
   ],
   imports: [
     BrowserModule,

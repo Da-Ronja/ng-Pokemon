@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AuthorizationGuard } from 'src/app/guards/authorization.guard';
+import { Component} from '@angular/core';
+import { Trainer } from 'src/app/models/trainer.model';
 import { TrainerService } from 'src/app/services/trainer.service';
 
 @Component({
@@ -8,5 +8,12 @@ import { TrainerService } from 'src/app/services/trainer.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+
+  get trainer(): Trainer | undefined {
+    return this.trainerService.trainer;
+  }
+  constructor(
+    private readonly trainerService: TrainerService
+  ) {}
 
 }

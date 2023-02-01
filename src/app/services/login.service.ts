@@ -1,5 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable, of, switchMap, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Trainer } from '../models/trainer.model';
+
+const {apiTrainers} = environment;
+const{apiKey} = environment;
 
 @Injectable({
   providedIn: 'root'
@@ -9,33 +15,33 @@ export class LoginService {
   constructor(private readonly http: HttpClient) { }
 
   // Login
-    public login(username: string): Observable<User>{
+    public login(username: string): Observable<Trainer>{
       return this.checkUsername(username)
         .pipe(
-          switchMap((user: User | undefined)=>{
-            if(user === undefined){
-              return this.createUser(username);
+          switchMap((trainer: Trainer | undefined)=>{
+            if(trainer === undefined){
+              return this.createTrainer(username);
             }
-           return of(user);
+           return of(trainer);
           }),
-          tap((user: User)=>{
-            StorageUtil.storageSave<User>(storageKeys.User, user);
+          tap((user: Trainer)=>{
+            StorageUtil.storageSave<Trainer>(storageKeys.User, user);
           })
         )
     }
   // Check if user exists
-    private checkUsername(username: string):Observable<User | undefined>{
-      return this.http.get<User[]>(`${apiUsers}?username=${username}`)
+    private checkUsername(username: string):Observable<Trainer | undefined>{
+      return this.http.get<Trainer[]>(`${apiTrainers}?username=${username}`)
       .pipe(
-        map((response:User[])=>response.pop())
+        map((response:Trainer[])=>response.pop())
       )
     }
-  // If not user - create a User
-  private createUser(username: string):Observable<User>{
-    // user
-    const user = {
+  // If not user - create a Trainer
+  private createTrainer(username: string):Observable<Trainer>{
+    // trainer
+    const trainer = {
       username,
-      favourites: []
+      pokemon: []
     };
     //headers -> API key
     const headers = new HttpHeaders({
@@ -43,7 +49,7 @@ export class LoginService {
       "x-api-key": apiKey
     });
     // Post - Create items on the Server
-    return this.http.post<User>(apiUsers, user, {
+    return this.http.post<Trainer>(apiTrainers, trainer, {
       headers
     })
   }

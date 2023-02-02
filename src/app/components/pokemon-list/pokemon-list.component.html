@@ -1,9 +1,6 @@
 <p>pokemon-list works!</p>
 <ul>
-    <li *ngFor="let pokemon of pokemon">
-        <div>
-            <img [src]="pokemon.url" />
-        </div>
-        {{pokemon.name}}
-    </li>
+    <app-pokemon-list-item *ngFor="let pokemon of pokemon" [pokemon]="pokemon">
+        
+    </app-pokemon-list-item>
 </ul>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Result } from 'src/app/models/pokemon.model';
+import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonCatalogueService } from 'src/app/services/pokemon-catalogue.service';
 
 @Component({
@@ -9,16 +9,17 @@ import { PokemonCatalogueService } from 'src/app/services/pokemon-catalogue.serv
 })
 export class PokemonCataloguePage implements OnInit {
 
-  get pokemonResults(): Result[] {
-    return this.pokemonCatalogueService.pokemonResults;
-  }
-
+  
   get loading(): boolean {
     return this.pokemonCatalogueService.loading;
   }
-
+  
   get error(): string {
     return this.pokemonCatalogueService.error;
+  }
+  
+  get pokemons(): Pokemon[] {
+    return this.pokemonCatalogueService.pokemons;
   }
 
   constructor(

@@ -20,7 +20,8 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
     TrainerPage,
     PokemonCataloguePage,
     LoginFormComponent,
-    PokemonListComponent
+    PokemonListComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

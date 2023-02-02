@@ -2,7 +2,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { finalize, map } from 'rxjs';
 import { environment } from "src/environments/environment";
+import { storageKeys } from '../enum/storage-keys.enum';
 import { Result, Pokemon } from '../models/pokemon.model';
+import { StorageUtil } from '../utils/storage.Utils';
 
 const { apiPokemon } = environment;
 
@@ -31,7 +33,15 @@ export class PokemonCatalogueService {
   }
 
   public findAllPokemons(): void {
+    const storedPokemon = StorageUtil.storageRead<Pokemon[]>(storageKeys.Pokemons) || []
     this._loading = true
+    if (storedPokemon?.length > 0) {
+      console.log("Finns")
+      this._pokemon = storedPokemon
+
+      return
+
+    }
     this.http.get<Result>(apiPokemon)
       .pipe(
         map((result: Result) => {
@@ -46,7 +56,9 @@ export class PokemonCatalogueService {
           this._pokemon = pokemonResults.map((pokemon, index) => ({
             ...pokemon,
             url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`
-          }))
+          }));
+          StorageUtil.storageSave<Pokemon[]>(storageKeys.Pokemons, this._pokemon)
+          console.log("Finns inte")
         },
         error: (error: HttpErrorResponse) => {
           this._error = error.message;

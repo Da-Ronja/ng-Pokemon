@@ -2,7 +2,7 @@ export interface Result {
     count: number;
     next: string;
     previous: string;
-    results: Pokemon;
+    results: Pokemon[];
 }
 
 export interface Pokemon {

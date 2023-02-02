@@ -4,10 +4,18 @@
         <input type="text" 
             ngModel
             #username="ngModel"
+            required
+            minlength="3"
+            maxlength="20"
             name="username" id="username" 
-            class="border border-slate-300 p-2 rounded w-full required" 
-            placeholder="Johndoe">
+            class="border border-slate-300 p-2 rounded w-full" 
+            placeholder="Please insert a name"/>
+        <div *ngIf="username.errors && (username.dirty || username.touched)">
+            <p *ngIf="username.errors?.['required']" class="text-red-700">Username is required!</p>
+            <p *ngIf="username.errors?.['minlength']" class="text-red-700">Username is to short, min 3 characters!</p>
+            <p *ngIf="username.errors?.['maxlength']" class="text-red-700">Username is to long, max 20 characters!</p>
+        </div>
     </fieldset>
-    <button type="submit" class="bg-yellow-500 p-2 rounded">Login</button>
+    <button type="submit" class="bg-yellow-500 p-2 rounded" [disabled]="loginForm.form.invalid">Login</button>
 </form>
 

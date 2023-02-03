@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Trainer } from 'src/app/models/trainer.model';
 import { LoginService } from 'src/app/services/login.service';
 import { TrainerService } from 'src/app/services/trainer.service';
@@ -15,6 +14,7 @@ import { TrainerService } from 'src/app/services/trainer.service';
 export class LoginFormComponent {
 
   @Output() login: EventEmitter<void> = new EventEmitter();
+  @Input() loading: boolean = false;
 
  constructor( 
   private readonly loginService: LoginService,

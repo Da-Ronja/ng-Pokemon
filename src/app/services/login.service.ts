@@ -12,9 +12,11 @@ const{apiKey} = environment;
   providedIn: 'root'
 })
 export class LoginService {
+  private _loading: boolean = false;
+  
   // Dependency Injection
   constructor(private readonly http: HttpClient) { }
-  private _loading: boolean = false;
+
 
 
   get loading(): boolean {

@@ -1,13 +1,18 @@
 <nav class="sticky w-full h-12 shadow-2xl bg-red-600 border-b-4 border-black flex justify-between items-center p-4 fixed ">
-    <img class="ml-8 h-8" src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" alt="...">
+    <ng-container *ngIf="trainer == undefined">
+        <div  class="flex justify-center w-full absolute mt-10">
+            <img class="h-16" src="assets/img/pngegg.png"alt="">
+        </div>
+    </ng-container>
     
     <ng-container *ngIf="trainer !== undefined">
+        <img class="ml-8 h-16" src="assets/img/pngegg (2).png" alt="...">
         <ul class="flex">
             <li class="px-4">
-                <a routerLink="/catalogue">Pokemon Catalogue</a>
+                <a routerLink="/catalogue" class="text-white rounded text-xs hover:bg-blue-700 hover:text-yellow-500 flex font-extralight shadow border-2 p-1"><img class="h-5 " src="assets/img/pngegg (3).png"alt="">Pokemon Catalogue</a>
             </li>
             <li class="px-4">
-                <a routerLink="/trainer">Trainer</a>
+                <a routerLink="/trainer"class="text-white rounded text-xs hover:bg-blue-700 hover:text-yellow-500  flex font-extralight shadow border-2 p-1"><img class="h-5 " src="assets/img/pngegg (3).png"alt="">Trainer</a>
             </li>
         </ul>
     </ng-container>

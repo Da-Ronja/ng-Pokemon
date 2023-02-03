@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, of, switchMap} from 'rxjs';
+import { finalize, map, Observable, of, switchMap} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Trainer } from '../models/trainer.model';
 
@@ -14,9 +14,16 @@ const{apiKey} = environment;
 export class LoginService {
   // Dependency Injection
   constructor(private readonly http: HttpClient) { }
+  private _loading: boolean = false;
+
+
+  get loading(): boolean {
+    return this._loading
+  }
 
   // Login
     public login(username: string): Observable<Trainer>{
+      this._loading = true
       return this.checkUsername(username)
         .pipe(
           switchMap((trainer: Trainer | undefined)=>{
@@ -24,6 +31,9 @@ export class LoginService {
               return this.createTrainer(username);
             }
            return of(trainer);
+          }),
+          finalize(() => {
+            this._loading = false;
           })
         )
     }

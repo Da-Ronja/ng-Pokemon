@@ -11,6 +11,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
+import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';
+import { CatchPokemonButtonComponent } from './components/catch-pokemon-button/catch-pokemon-button.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
     PokemonCataloguePage,
     LoginFormComponent,
     PokemonListComponent,
+    PokemonListItemComponent,
+    CatchPokemonButtonComponent
     NavbarComponent
   ],
   imports: [

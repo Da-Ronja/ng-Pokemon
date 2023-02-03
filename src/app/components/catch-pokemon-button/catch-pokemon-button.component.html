@@ -2,9 +2,9 @@
     <ng-container *ngIf="isCaughtPokemon; then isCaught else notCaught"></ng-container>
 
     <ng-template #isCaught>
-        <button>Is Caught</button>
+        <img class="h-6" src="assets/img/pngegg (6).png" alt="...">
     </ng-template>
     <ng-template #notCaught>
-        <button (click)="onCatch()">CATCH</button>
+        <button (click)="onCatch()" class="text-gray-700 ">CATCH</button>
     </ng-template>
 </div>

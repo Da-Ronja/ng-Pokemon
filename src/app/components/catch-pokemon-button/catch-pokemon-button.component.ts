@@ -33,8 +33,8 @@ export class CatchPokemonButtonComponent implements OnInit {
     // add to trainer
     this.catchPokemonService.addToCollection(this.pokemonName)
       .subscribe({
-        next: (response: Trainer) => {
-          console.log('Next: ' + response)
+        next: (trainer: Trainer) => {
+          this.isCaughtPokemon = this.trainerService.inCollection(this.pokemonName)
         },
         error: (error: HttpErrorResponse) => {
           console.log('Error: ', error.message);

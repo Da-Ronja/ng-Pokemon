@@ -1,4 +1,24 @@
 # NgPokemon
+A SPA built using Angular Framework to collect and manage Pokémon.
+
+## Features
+- Landing Page: Login page where the user can enter their Trainer name. The name will be saved to the Trainer API and in local/session storage. The app will then redirect to the Pokémon Catalogue page.
+- Trainer Page: Displays the list of Pokémon that the trainer has collected, with the Pokémon name and image. The user can also remove a Pokémon from their collection.
+- Pokémon Catalogue Page: Displays the list of Pokémon names and avatars. It is recommended to store the Pokémon data in session storage to reduce API calls. Option to create a pagination feature to load a limited number of Pokémon at a time.
+
+## Requirements
+- Figma
+- NPM/Node.js (LTS – Long Term Support version)
+- Angular CLI
+- Visual Studio Code Text Editor/IntelliJ
+- Browser Developer Tools for testing and debugging (Angular Dev Tools)
+- Git
+- Trainer API: https://github.com/dewald-els/noroff-assignment-api
+
+## Resources
+Pokémon images: https://github.com/
+
+##
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
 

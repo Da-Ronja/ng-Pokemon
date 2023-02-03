@@ -35,4 +35,18 @@ export class TrainerService {
     }
     return false
   }
+
+  public addCaughtPokemon(pokemon: Pokemon): void {
+    if (this._trainer) {
+      this._trainer.pokemon.push(pokemon)
+    }
+  }
+
+  public removeFromCollection(name: string): void {
+    if (this._trainer) {
+      this._trainer.pokemon = this._trainer.pokemon.filter((pokemon: Pokemon) => pokemon.name !== name) 
+    }
+  }
+
+
 }

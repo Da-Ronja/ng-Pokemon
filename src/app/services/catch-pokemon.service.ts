@@ -41,7 +41,9 @@ export class CatchPokemonService {
     }
 
     if (this.trainerService.inCollection(name)) {
-      throw new Error("addToCollection: You have all ready caugth Pokemon with name: " + name);
+      this.trainerService.removeFromCollection(name);
+    } else {
+      this.trainerService.addCaughtPokemon(pokemon);
     }
 
     const headers = new HttpHeaders({
@@ -52,7 +54,7 @@ export class CatchPokemonService {
     this._loading = true
 
     return this.http.patch<Trainer>(`${apiTrainers}/${trainer.id}`, {
-      pokemon: [...trainer.pokemon, pokemon]
+      pokemon: [...trainer.pokemon]
     }, {
       headers
     })

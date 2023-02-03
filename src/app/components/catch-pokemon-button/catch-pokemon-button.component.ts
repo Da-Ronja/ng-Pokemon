@@ -15,7 +15,6 @@ export class CatchPokemonButtonComponent implements OnInit {
   public isCaughtPokemon: boolean = false;
   @Input() pokemonName: string = "";
 
-
   get loading(): boolean {
     return this.catchPokemonService.loading;
   }

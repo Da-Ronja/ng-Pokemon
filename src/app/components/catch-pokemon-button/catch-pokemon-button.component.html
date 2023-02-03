@@ -2,8 +2,9 @@
     <ng-container *ngIf="isCaughtPokemon; then isCaught else notCaught"></ng-container>
 
     <ng-template #isCaught>
-        <button>Is Caught</button>
+        <button (click)="onCatch()">Is Caught</button>
     </ng-template>
+    
     <ng-template #notCaught>
         <button (click)="onCatch()">CATCH</button>
     </ng-template>

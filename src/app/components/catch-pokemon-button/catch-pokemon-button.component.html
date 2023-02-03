@@ -1,4 +1,10 @@
-<div>
+<ng-container *ngIf="showTrainerButton; then removeButton else caughtButton"></ng-container>
+
+<ng-template #removeButton>
+        <button (click)="onCatch()">Remove</button>
+</ng-template>
+
+<ng-template #caughtButton>
     <ng-container *ngIf="isCaughtPokemon; then isCaught else notCaught"></ng-container>
 
     <ng-template #isCaught>
@@ -8,4 +14,4 @@
     <ng-template #notCaught>
         <button (click)="onCatch()">CATCH</button>
     </ng-template>
-</div>
+</ng-template>

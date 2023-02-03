@@ -11,13 +11,9 @@ import { TrainerService } from 'src/app/services/trainer.service';
 })
 export class CatchPokemonButtonComponent implements OnInit {
 
-  // public loading: boolean = false;
+  public loading: boolean = false;
   public isCaughtPokemon: boolean = false;
   @Input() pokemonName: string = "";
-
-  get loading(): boolean {
-    return this.catchPokemonService.loading;
-  }
 
   constructor(
     private readonly catchPokemonService: CatchPokemonService,
@@ -29,10 +25,12 @@ export class CatchPokemonButtonComponent implements OnInit {
    }
 
   onCatch(): void {
+    this.loading = true;
     // add to trainer
     this.catchPokemonService.addToCollection(this.pokemonName)
       .subscribe({
         next: (trainer: Trainer) => {
+          this.loading = true;
           this.isCaughtPokemon = this.trainerService.inCollection(this.pokemonName)
         },
         error: (error: HttpErrorResponse) => {

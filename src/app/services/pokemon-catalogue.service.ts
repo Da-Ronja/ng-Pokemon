@@ -35,8 +35,8 @@ export class PokemonCatalogueService {
   public findAllPokemons(): void {
     const storedPokemon = StorageUtil.storageRead<Pokemon[]>(storageKeys.Pokemons) || []
     this._loading = true
+    // if (this._pokemon.length > 0 || this.loading) {
     if (storedPokemon?.length > 0) {
-      console.log("Finns")
       this._pokemon = storedPokemon
 
       return
@@ -57,8 +57,7 @@ export class PokemonCatalogueService {
             ...pokemon,
             url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`
           }));
-          StorageUtil.storageSave<Pokemon[]>(storageKeys.Pokemons, this._pokemon)
-          console.log("Finns inte")
+          StorageUtil.storageSave<Pokemon[]>(storageKeys.Pokemons, this._pokemon);
         },
         error: (error: HttpErrorResponse) => {
           this._error = error.message;

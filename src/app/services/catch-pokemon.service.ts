@@ -14,12 +14,6 @@ const { apiKey, apiTrainers } = environment;
 })
 export class CatchPokemonService {
 
-  private _loading: boolean = false;
-
-  get loading(): boolean {
-    return this._loading;
-  }
-
   constructor(
     private readonly http: HttpClient,
     private readonly pokemonCatalogueService: PokemonCatalogueService,
@@ -50,8 +44,6 @@ export class CatchPokemonService {
       'Content-Type': 'application/json',
       'x-api-key': apiKey
     })
-
-    this._loading = true
 
     return this.http.patch<Trainer>(`${apiTrainers}/${trainer.id}`, {
       pokemon: [...trainer.pokemon]

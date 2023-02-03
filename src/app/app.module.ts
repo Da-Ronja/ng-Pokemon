@@ -24,7 +24,7 @@ import { CatchPokemonButtonComponent } from './components/catch-pokemon-button/c
     LoginFormComponent,
     PokemonListComponent,
     PokemonListItemComponent,
-    CatchPokemonButtonComponent
+    CatchPokemonButtonComponent,
     NavbarComponent
   ],
   imports: [

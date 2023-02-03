@@ -1,7 +1,8 @@
-<form #loginForm="ngForm"(ngSubmit)="loginSubmit(loginForm)">
+<form #loginForm="ngForm"(ngSubmit)="loginSubmit(loginForm)" [ngClass]="{'opacity-20': loading}">
     <fieldset class="mb-3 mt-8 flex justify-center">
         <label for="username" class="block"></label>
         <input type="text" 
+            [readOnly]="loading"
             ngModel
             #username="ngModel"
             required
@@ -14,11 +15,9 @@
     <div *ngIf="username.errors && (username.dirty || username.touched)" class="flex justify-center">
         <p *ngIf="username.errors?.['required']" class="text-red-700">Username is required!</p>
         <p *ngIf="username.errors?.['minlength']" class="text-red-700">Username is to short, min 3 characters!</p>
-        <p *ngIf="username.errors?.['maxlength']" class="text-red-700">Username is to long, max 20 characters!</p>
     </div>
     <div class="flex justify-center mt-3">
-        <button type="submit" class="bg-yellow-500 p-2 rounded text-white font-bold hover:bg-yellow-300" [disabled]="loginForm.form.invalid">Login</button>
-    </div>
-    
+        <button type="submit" class="bg-yellow-500 p-2 rounded text-white font-bold hover:bg-yellow-300" [disabled]="loginForm.form.invalid" [disabled]="loading">Login</button>
+    </div>  
 </form>
 

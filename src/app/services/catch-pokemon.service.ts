@@ -14,12 +14,6 @@ const { apiKey, apiTrainers } = environment;
 })
 export class CatchPokemonService {
 
-  private _loading: boolean = false;
-
-  get loading(): boolean {
-    return this._loading;
-  }
-
   constructor(
     private readonly http: HttpClient,
     private readonly pokemonCatalogueService: PokemonCatalogueService,
@@ -41,7 +35,9 @@ export class CatchPokemonService {
     }
 
     if (this.trainerService.inCollection(name)) {
-      throw new Error("addToCollection: You have all ready caugth Pokemon with name: " + name);
+      this.trainerService.removeFromCollection(name);
+    } else {
+      this.trainerService.addCaughtPokemon(pokemon);
     }
 
     const headers = new HttpHeaders({
@@ -49,10 +45,8 @@ export class CatchPokemonService {
       'x-api-key': apiKey
     })
 
-    this._loading = true
-
     return this.http.patch<Trainer>(`${apiTrainers}/${trainer.id}`, {
-      pokemon: [...trainer.pokemon, pokemon]
+      pokemon: [...trainer.pokemon]
     }, {
       headers
     })

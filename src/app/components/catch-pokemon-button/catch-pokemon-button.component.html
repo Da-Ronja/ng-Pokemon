@@ -4,14 +4,14 @@
         <button (click)="onCatch()">Remove</button>
 </ng-template>
 
+
 <ng-template #caughtButton>
     <ng-container *ngIf="isCaughtPokemon; then isCaught else notCaught"></ng-container>
-
     <ng-template #isCaught>
-        <img src="assets/img/pngegg (6).png" class="h-5 " >
-    </ng-template>
-    
+        <img src="assets/img/pngegg (6).png" class="h-4 mt-1" >
+    </ng-template>   
     <ng-template #notCaught>
-        <button (click)="onCatch()" class="text-gray-700 ">CATCH</button>
+        <button type="button" (click)="onCatch()" class="px-2 text-xs text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Catch</button>
     </ng-template>
 </ng-template>
+

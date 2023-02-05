@@ -1,4 +1,8 @@
-<main class="px-5">
+<main class="pl-32 pr-5 pokemon">
     <p *ngIf="loading">Loading Pokemons...</p>
+    <div class="flex justify-center w-auto">
+        <img src="assets/img/pngaaa.com-1906169.png" class="h-28 mt-5" >
+    </div>
+
     <app-pokemon-list [pokemon]="pokemons"></app-pokemon-list>
 </main>

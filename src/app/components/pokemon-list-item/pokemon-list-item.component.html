@@ -1,12 +1,11 @@
-<div *ngIf="pokemon" class="bg-white rounded shadow-md overflow-hidden m-2 w-1/5 border-4 border-yellow-500">
-    <div class="p-2 bg-sky-200 flex justify-center">
+<div *ngIf="pokemon" class="bg-white rounded shadow-md overflow-hidden">
+    <div class="p-2 flex justify-center bg-blue-200">
         <img [src]="pokemon.url" />
     </div>
-    <div class="px-2">
+    <div class="px-2 flex justify-between">
         <span class="text-gray-700 font-semibold text-sm">
             {{pokemon.name.toUpperCase()}}
         </span>
         <app-catch-pokemon-button [pokemonName]="pokemon.name"></app-catch-pokemon-button>
-    </div>
-    
+    </div>    
 </div>

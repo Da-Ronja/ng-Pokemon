@@ -38,7 +38,7 @@ export class CatchPokemonButtonComponent implements OnInit {
   onCatch(): void {
     this.loading = true;
     // add to trainer
-    this.catchPokemonService.addToCollection(this.pokemonName)
+    this.catchPokemonService.handleAddAndRemoveToCollection(this.pokemonName)
       .subscribe({
         next: (trainer: Trainer) => {
           

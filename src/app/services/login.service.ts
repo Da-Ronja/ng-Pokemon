@@ -17,8 +17,6 @@ export class LoginService {
   // Dependency Injection
   constructor(private readonly http: HttpClient) { }
 
-
-
   get loading(): boolean {
     return this._loading
   }
@@ -63,6 +61,4 @@ export class LoginService {
       headers
     })
   }
-
-  // If User || Created User -> store User
 }

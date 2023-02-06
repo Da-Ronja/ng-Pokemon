@@ -13,6 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';
 import { CatchPokemonButtonComponent } from './components/catch-pokemon-button/catch-pokemon-button.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CatchPokemonButtonComponent } from './components/catch-pokemon-button/c
     PokemonListComponent,
     PokemonListItemComponent,
     CatchPokemonButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    LogoutButtonComponent
   ],
   imports: [
     BrowserModule,

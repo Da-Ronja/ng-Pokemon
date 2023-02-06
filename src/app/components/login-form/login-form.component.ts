@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Trainer } from 'src/app/models/trainer.model';
@@ -31,8 +32,8 @@ export class LoginFormComponent {
       this.trainerServicee.trainer = trainer;
       this.login.emit();
     },
-    error: () => {
-
+    error: (error: HttpErrorResponse) => {
+      console.log('Error: ', error.message);
     }
   })
  }

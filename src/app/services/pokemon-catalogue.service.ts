@@ -33,22 +33,18 @@ export class PokemonCatalogueService {
   }
 
   public findAllPokemons(): void {
-    const storedPokemon = StorageUtil.storageRead<Pokemon[]>(storageKeys.Pokemons) || []
     this._loading = true
+    const storedPokemon = StorageUtil.storageRead<Pokemon[]>(storageKeys.Pokemons) || []
+    // if (this._pokemon.length > 0 || this.loading) {
     if (storedPokemon?.length > 0) {
-      console.log("Finns")
       this._pokemon = storedPokemon
-
+      this._loading = false;
       return
-
     }
     this.http.get<Result>(apiPokemon)
       .pipe(
         map((result: Result) => {
           return result.results
-        }),
-        finalize(() => {
-          this._loading = false;
         })
       )
       .subscribe({
@@ -57,8 +53,8 @@ export class PokemonCatalogueService {
             ...pokemon,
             url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`
           }));
-          StorageUtil.storageSave<Pokemon[]>(storageKeys.Pokemons, this._pokemon)
-          console.log("Finns inte")
+          StorageUtil.storageSave<Pokemon[]>(storageKeys.Pokemons, this._pokemon);
+          this._loading = false;
         },
         error: (error: HttpErrorResponse) => {
           this._error = error.message;

@@ -12,6 +12,7 @@ export class NavbarComponent {
   get trainer(): Trainer | undefined {
     return this.trainerService.trainer;
   }
+  
   constructor(
     private readonly trainerService: TrainerService
   ) {}

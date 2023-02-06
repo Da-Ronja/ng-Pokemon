@@ -1,4 +1,5 @@
 import { Component} from '@angular/core';
+import { Router } from '@angular/router';
 import { Trainer } from 'src/app/models/trainer.model';
 import { TrainerService } from 'src/app/services/trainer.service';
 
@@ -14,7 +15,13 @@ export class NavbarComponent {
   }
   
   constructor(
-    private readonly trainerService: TrainerService
+    private readonly trainerService: TrainerService,
+    private router: Router
   ) {}
 
+  logout(): void {
+    this.trainerService.trainer = undefined;
+    sessionStorage.clear();
+    this.router.navigateByUrl("/login");
+  }
 }

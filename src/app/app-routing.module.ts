@@ -13,7 +13,8 @@ const routes: Routes = [
 },
 {
   path:"login",
-  component: LoginPage
+  component: LoginPage,
+
 },
 {
   path:"trainer",

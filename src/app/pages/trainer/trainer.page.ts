@@ -8,7 +8,7 @@ import { TrainerService } from 'src/app/services/trainer.service';
   templateUrl: './trainer.page.html',
   styleUrls: ['./trainer.page.css']
 })
-export class TrainerPage implements OnInit {
+export class TrainerPage {
 
   get trainer(): Trainer | undefined {
     return this.trainerService.trainer;
@@ -24,7 +24,5 @@ export class TrainerPage implements OnInit {
   constructor(
     private readonly trainerService: TrainerService
   ) { }
-
-  ngOnInit(): void { }
 
 }

@@ -1,10 +1,10 @@
 # NgPokemon
-A SPA built using Angular Framework to collect and manage Pokémon.
+A SPA built using Angular Framework to collect and manage Pokémon. Styled using Tailwindcss
 
 ## Features
-- Landing Page: Login page where the user can enter their Trainer name. The name will be saved to the Trainer API and in local/session storage. The app will then redirect to the Pokémon Catalogue page.
+- Landing Page: Login page where the user can enter their Trainer name. The name will be saved to the Trainer API and in session storage. The app will then redirect to the Pokémon Catalogue page.
 - Trainer Page: Displays the list of Pokémon that the trainer has collected, with the Pokémon name and image. The user can also remove a Pokémon from their collection.
-- Pokémon Catalogue Page: Displays the list of Pokémon names and avatars. It is recommended to store the Pokémon data in session storage to reduce API calls. Option to create a pagination feature to load a limited number of Pokémon at a time.
+- Pokémon Catalogue Page: Displays the list of Pokémon names and avatars where trainer is able to catch pokemon´s. Store the Pokémon data in session storage to reduce API calls.
 
 ## Requirements
 - Figma
@@ -16,7 +16,7 @@ A SPA built using Angular Framework to collect and manage Pokémon.
 - Trainer API: https://github.com/dewald-els/noroff-assignment-api
 
 ## Resources
-Pokémon images: https://github.com/
+Pokémon images: https://pokeapi.co/api/v2/pokemon?limit=100&offset=0
 
 ##
 

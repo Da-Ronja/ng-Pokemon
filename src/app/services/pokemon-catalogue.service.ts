@@ -35,7 +35,7 @@ export class PokemonCatalogueService {
   public findAllPokemons(): void {
     this._loading = true
     const storedPokemon = StorageUtil.storageRead<Pokemon[]>(storageKeys.Pokemons) || []
-    // if (this._pokemon.length > 0 || this.loading) {
+
     if (storedPokemon?.length > 0) {
       this._pokemon = storedPokemon
       this._loading = false;

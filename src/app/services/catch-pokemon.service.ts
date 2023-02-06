@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
@@ -22,7 +22,7 @@ export class CatchPokemonService {
 
   // get by pokemon name
 
-  public addToCollection(name: string): Observable<Trainer> {
+  public handleAddAndRemoveToCollection(name: string): Observable<Trainer> {
     if (!this.trainerService.trainer) {
       throw new Error("addToCollection: There is no trainer");
     }

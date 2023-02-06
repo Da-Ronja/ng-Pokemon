@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TrainerService } from 'src/app/services/trainer.service';
 
 @Component({
   selector: 'app-logout-button',
@@ -7,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly trainerService: TrainerService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
-    
-  }
 
+  }
+  logout(): void {
+    this.trainerService.trainer = undefined;
+    sessionStorage.clear();
+    this.router.navigateByUrl("/login");
+  }
 }

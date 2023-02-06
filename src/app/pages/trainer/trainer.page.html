@@ -1,5 +1,4 @@
 <main class=" pokemon h-screen w-screen flex justify-center"> 
     <h1 *ngIf="this.trainer!=undefined" class="mr-16 font-serif block text-lg">Welcome <img src="assets/img/pngegg (9).png" class="h-20" >{{trainer.username.toUpperCase()}}</h1>   
-    <app-logout-button></app-logout-button>
     <app-pokemon-list [pokemon]="pokemonCollection"></app-pokemon-list>
 </main>
